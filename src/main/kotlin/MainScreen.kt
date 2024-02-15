@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun mainScreen() {
@@ -20,12 +21,15 @@ fun mainScreen() {
         Column (modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(10f),
             verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Spacer(modifier = Modifier.fillMaxSize().weight(.8f))
+            Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
+                contentAlignment = Alignment.Center){
+                Text("#####K", fontSize = smartText(), color = Color.White)
+            }
 
             repeat(4) {
                 Row(modifier = Modifier.fillMaxSize().weight(1f), horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically){
-                    Button(onClick = {}) {
+                    Button(modifier = Modifier.height(50.dp).width(100.dp), onClick = {  }) {
 
                     }
                 }
