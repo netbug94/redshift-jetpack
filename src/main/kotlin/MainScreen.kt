@@ -1,8 +1,6 @@
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,8 +17,20 @@ fun mainScreen() {
             Text("JetPack-Redshift", color = Color.White, fontSize = smartText())
         }
 
-        Row (modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(10f)) {
+        Column (modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(10f),
+            verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
 
+            Spacer(modifier = Modifier.fillMaxSize().weight(.8f))
+
+            repeat(4) {
+                Row(modifier = Modifier.fillMaxSize().weight(1f), horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically){
+                    Button(onClick = {}) {
+
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
         }
     }
 }
