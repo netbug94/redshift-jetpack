@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Nightlight button 5
+# Nightlight button 1
 
 redshift -x
 
