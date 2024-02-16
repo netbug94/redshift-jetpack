@@ -1,3 +1,10 @@
+package views
+
+import customs.DeepBlack
+import customs.DeepGray
+import customs.DeepPurple
+import customs.ErgoGray
+import customs.HyperBlue
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -9,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import customs.smartText
 
 @Composable
 fun mainScreen() {

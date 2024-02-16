@@ -1,3 +1,5 @@
+package customs
+
 import androidx.compose.ui.graphics.Color
 
 val DeepBlack = Color(0xFF010409)
