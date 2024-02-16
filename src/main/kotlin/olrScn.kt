@@ -5,16 +5,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun olrScn(wmk: String) {
     Box(modifier = Modifier.fillMaxSize()) {
 
-        Text(
-            text = wmk,
+        Text(text = wmk,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .alpha(.5f),
+                .alpha(.5f), color = Color.DarkGray
         )
     }
     println("By olracnai")
