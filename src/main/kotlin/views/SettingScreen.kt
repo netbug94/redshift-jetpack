@@ -27,7 +27,8 @@ import customs.smartText
 @Composable
 fun settingScreen() {
     var currentScreen by remember { mutableStateOf<Navi>(Navi.SettingScn) }
-    val nightLight = listOf("B1", "B2", "B3", "B4", "B5")
+    val titleList = listOf("Apt install", "Dnf install", "Nala install", "Pacman install", "Zypper install")
+    val suffixList = listOf("Apt", "Dnf", "Nala", "Pac", "Zyp")
 
     when (currentScreen) {
         is Navi.SettingScn -> {
@@ -42,20 +43,20 @@ fun settingScreen() {
                             .clickable(interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
                                 onClick = { currentScreen = Navi.MainScn })) {
-                        Image(painter = painterResource("HomePng240.png"),
+                        Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                         )
                     }
 
-                    Text("JetPack-Redshift", color = HyperBlue, fontSize = smartText(.9f))
+                    Text("JetPack-Redshift", color = HyperBlue, fontSize = smartText(1f))
 
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
                                 onClick = { currentScreen = Navi.SettingScn })) {
-                        Image(painter = painterResource("SettingsPng240F.png"),
+                        Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
                         )
@@ -73,9 +74,9 @@ fun settingScreen() {
                         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
                         Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
                             contentAlignment = Alignment.Center) {
-                            Text("NightLight", fontSize = smartText(.8f), color = HyperBlue)
+                            Text("Install redshift", fontSize = smartText(.9f), color = HyperBlue)
                         }
-                        nightLight.forEachIndexed { _, name ->
+                        titleList.forEachIndexed { index, name ->
                             Row(modifier = Modifier
                                     .fillMaxHeight()
                                     .weight(1f),
@@ -83,7 +84,7 @@ fun settingScreen() {
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
-                                    onClick = { }) {
+                                    onClick = {  }) {
                                     Text(text = name)
                                 }
                             }
