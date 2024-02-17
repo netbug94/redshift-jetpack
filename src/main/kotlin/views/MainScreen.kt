@@ -1,6 +1,6 @@
 package views
 
-import Navi
+import engine_helpers.Navi
 import androidx.compose.foundation.Image
 import customs.DeepBlack
 import customs.DeepGray

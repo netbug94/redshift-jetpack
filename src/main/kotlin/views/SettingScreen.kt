@@ -1,6 +1,6 @@
 package views
 
-import Navi
+import engine_helpers.Navi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.*
+import engine_helpers.ClipBoardHandler.copyClipboard
 
 @Composable
 fun settingScreen() {
@@ -82,7 +83,7 @@ fun settingScreen() {
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
-                                    onClick = { copyToClipboard(text) }) {
+                                    onClick = { copyClipboard(text) }) {
                                     Text(text = "Cp $text", fontSize = smartText(.7f))
                                 }
                             }
