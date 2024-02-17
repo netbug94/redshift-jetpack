@@ -1,11 +1,11 @@
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import customs.myScreen
 import customs.olrScn
+import views.mainScreen
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        myScreen()
+        mainScreen()
         olrScn("\uD83C\uDF35olr")
     }
 }

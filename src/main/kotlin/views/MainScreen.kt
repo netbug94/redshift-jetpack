@@ -85,7 +85,7 @@ fun mainScreen() {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
                                     onClick = { selectedButton = name }) {
-                                    Text(text = name)
+                                    Text(text = name, fontSize = smartText(.7f))
                                 }
                             }
                         }
@@ -112,7 +112,7 @@ fun mainScreen() {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
                                     onClick = { selectedButton = name }) {
-                                    Text(text = name)
+                                    Text(text = name, fontSize = smartText(.7f))
                                 }
                             }
                         }

@@ -2,11 +2,6 @@ package views
 
 import Navi
 import androidx.compose.foundation.Image
-import customs.DeepBlack
-import customs.DeepGray
-import customs.DeepPurple
-import customs.ErgoGray
-import customs.HyperBlue
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -22,13 +17,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import customs.smartText
+import customs.*
 
 @Composable
 fun settingScreen() {
     var currentScreen by remember { mutableStateOf<Navi>(Navi.SettingScn) }
-    val titleList = listOf("Apt install", "Dnf install", "Nala install", "Pacman install", "Zypper install")
-    val suffixList = listOf("Apt", "Dnf", "Nala", "Pac", "Zyp")
+
+    val apt = "sudo apt install redshift -y"
+    val dnf = "sudo dnf install redshift -y"
+    val nala = "sudo nala install redshift -y"
+    val pacman = "sudo pacman install redshift -y"
+    val zypper = "sudo zypper install redshift -y"
+    val textList = listOf(apt, dnf, nala, pacman, zypper)
 
     when (currentScreen) {
         is Navi.SettingScn -> {
@@ -68,31 +68,29 @@ fun settingScreen() {
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
                 ) {
 // Left middle box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.6f))
+                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
 // Install buttons (true middle)
-                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.5f),
+                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
                         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
                         Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
                             contentAlignment = Alignment.Center) {
                             Text("Install redshift", fontSize = smartText(.9f), color = HyperBlue)
                         }
-                        titleList.forEachIndexed { index, name ->
-                            Row(modifier = Modifier
-                                    .fillMaxHeight()
-                                    .weight(1f),
+                        textList.forEachIndexed { _, text ->
+                            Row(modifier = Modifier.fillMaxSize().weight(1f),
                                 horizontalArrangement = Arrangement.Center,
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
-                                    onClick = {  }) {
-                                    Text(text = name)
+                                    onClick = { copyToClipboard(text) }) {
+                                    Text(text = "Cp $text", fontSize = smartText(.7f))
                                 }
                             }
                         }
                         Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
                     }
 // Right middle box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.6f))
+                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                 }
             }
         }
