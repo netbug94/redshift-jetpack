@@ -1,4 +1,4 @@
-package customs
+package customs.res
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi

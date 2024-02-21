@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import customs.smartText
+import customs.res.smartText
 
 @Composable
 fun leftButtonTxt() {

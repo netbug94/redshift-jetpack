@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import customs.*
 import customs.buttons.leftButtonTxt
 import customs.buttons.rightButtonTxt
+import customs.res.*
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.Companion.redshiftCommandD
 import engine_helpers.RedshiftController.Companion.redshiftCommandN
