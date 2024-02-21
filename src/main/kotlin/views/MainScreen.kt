@@ -20,6 +20,7 @@ import customs.*
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.Companion.redshiftCommandA
 import engine_helpers.RedshiftController.Companion.redshiftCommandB
+import engine_helpers.RedshiftController.Companion.redshiftCommandX
 
 @Composable
 fun mainScreen() {
@@ -80,7 +81,7 @@ fun mainScreen() {
                                 horizontalArrangement = Arrangement.Center,
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
-                                    colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
+                                    colors = ButtonDefaults.buttonColors(DeepPurple),
                                     onClick = {
                                         selectedButton = name
                                         // Execute command based on selectedButton
@@ -102,9 +103,22 @@ fun mainScreen() {
                         Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
                     }
 // Middle box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f),
-                        contentAlignment = Alignment.Center) {
-                        Text(selectedButton, color = HyperBlue, fontSize = smartText(1f))
+                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f)) {
+                        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f))
+
+                        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(8f),
+                            contentAlignment = Alignment.Center) {
+                            Text(selectedButton, color = HyperBlue, fontSize = smartText(1f))
+                        }
+                        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f).padding(horizontal = 20.dp)){
+                            Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
+                                colors = ButtonDefaults.buttonColors(DeepPurple),
+                                onClick = { selectedButton = "X"
+                                    redshiftCommandX("DefaultLightX.sh") }) {
+                                Text("Reset")
+                            }
+                        }
+                        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                     }
 // Daylight buttons
                     Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.5f),
@@ -120,7 +134,7 @@ fun mainScreen() {
                                 horizontalArrangement = Arrangement.Center,
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
-                                    colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
+                                    colors = ButtonDefaults.buttonColors(DeepPurple),
                                     onClick = {
                                         selectedButton = name
                                         // Execute command based on selectedButton

@@ -32,6 +32,10 @@ class RedshiftController {
                 println("Error: ${e.message}")
             }
         }
+        fun redshiftCommandX(scriptName: String) {
+            val scriptPath = "src/main/kotlin/bashfiles/$scriptName"
+            redshiftCommand(scriptPath)
+        }
 
         fun redshiftCommandA(scriptName: String) {
             val scriptPath = "src/main/kotlin/bashfiles/nightlight/$scriptName"
