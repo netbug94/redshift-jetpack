@@ -1,12 +1,6 @@
 package views
 
-import engine_helpers.Navi
 import androidx.compose.foundation.Image
-import customs.DeepBlack
-import customs.DeepGray
-import customs.DeepPurple
-import customs.ErgoGray
-import customs.HyperBlue
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -22,13 +16,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import customs.smartText
+import customs.*
+import engine_helpers.Navi
+import engine_helpers.RedshiftController.Companion.redshiftCommandA
+import engine_helpers.RedshiftController.Companion.redshiftCommandB
 
 @Composable
 fun mainScreen() {
     var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn) }
-    val nightLight = listOf("B1", "B2", "B3", "B4", "B5")
-    val dayLight = listOf("B6", "B7", "B8", "B9", "B10")
+    val nightLight = listOf("2000k", "2500k", "3500k", "4500k", "5500k")
+    val dayLight = listOf("7500k", "8500k", "9500k", "11000k", "12500k")
     var selectedButton by remember { mutableStateOf("") }
 
     when (currentScreen) {
@@ -41,9 +38,9 @@ fun mainScreen() {
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.MainScn })) {
+                        .clickable(interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(bounded = false, radius = 10.dp),
+                            onClick = { currentScreen = Navi.MainScn })) {
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(13.dp)
@@ -53,10 +50,10 @@ fun mainScreen() {
                     Text("JetPack-Redshift", color = HyperBlue, fontSize = smartText(1f))
 
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.SettingScn })) {
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(bounded = false, radius = 10.dp),
+                            onClick = { currentScreen = Navi.SettingScn })) {
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(14.dp)
@@ -78,14 +75,27 @@ fun mainScreen() {
                         }
                         nightLight.forEachIndexed { _, name ->
                             Row(modifier = Modifier
-                                    .fillMaxHeight()
-                                    .weight(1f),
+                                .fillMaxHeight()
+                                .weight(1f),
                                 horizontalArrangement = Arrangement.Center,
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
-                                    onClick = { selectedButton = name }) {
-                                    Text(text = name, fontSize = smartText(.7f))
+                                    onClick = {
+                                        selectedButton = name
+                                        // Execute command based on selectedButton
+                                        when (selectedButton) {
+                                            "2000k" -> redshiftCommandA("NightLight0.sh")
+                                            "2500k" -> redshiftCommandA("NightLight1.sh")
+                                            "3500k" -> redshiftCommandA("NightLight2.sh")
+                                            "4500k" -> redshiftCommandA("NightLight3.sh")
+                                            "5500k" -> redshiftCommandA("NightLight4.sh")
+                                            else -> {
+                                            }
+                                        }
+                                    }
+                                ) {
+                                    Text(text = name)
                                 }
                             }
                         }
@@ -105,14 +115,27 @@ fun mainScreen() {
                         }
                         dayLight.forEachIndexed { _, name ->
                             Row(modifier = Modifier
-                                    .fillMaxHeight()
-                                    .weight(1f),
+                                .fillMaxHeight()
+                                .weight(1f),
                                 horizontalArrangement = Arrangement.Center,
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
-                                    onClick = { selectedButton = name }) {
-                                    Text(text = name, fontSize = smartText(.7f))
+                                    onClick = {
+                                        selectedButton = name
+                                        // Execute command based on selectedButton
+                                        when (selectedButton) {
+                                            "7500k" -> redshiftCommandB("DayLight5.sh")
+                                            "8500k" -> redshiftCommandB("DayLight6.sh")
+                                            "9500k" -> redshiftCommandB("DayLight7.sh")
+                                            "11000k" -> redshiftCommandB("DayLight8.sh")
+                                            "12500k" -> redshiftCommandB("DayLight9.sh")
+                                            else -> {
+                                            }
+                                        }
+                                    }
+                                ) {
+                                    Text(text = name)
                                 }
                             }
                         }

@@ -29,6 +29,7 @@ fun settingScreen() {
     val nala = "sudo nala install redshift -y"
     val pacman = "sudo pacman install redshift -y"
     val zypper = "sudo zypper install redshift -y"
+
     val textList = listOf(apt, dnf, nala, pacman, zypper)
 
     when (currentScreen) {
