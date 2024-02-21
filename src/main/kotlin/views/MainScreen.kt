@@ -28,9 +28,11 @@ fun mainScreen() {
     val nightLight = listOf("2000k", "2500k", "3500k", "4500k", "5500k")
     val dayLight = listOf("7500k", "8500k", "9500k", "11000k", "12500k")
     var selectedButton by remember { mutableStateOf("") }
+    val btnTxt = smartText(.6f)
 
     when (currentScreen) {
         is Navi.MainScn -> {
+// Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
@@ -62,7 +64,7 @@ fun mainScreen() {
                     }
                 }
                 Divider(modifier = Modifier.height(1.dp), color = ErgoGray)
-
+// Body container
                 Row(modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Left box
@@ -111,7 +113,7 @@ fun mainScreen() {
                                         }
                                     }
                                 ) {
-                                    Text(text = name)
+                                    Text(text = name, fontSize = btnTxt)
                                 }
                             }
                         }
@@ -164,7 +166,7 @@ fun mainScreen() {
                                         }
                                     }
                                 ) {
-                                    Text(text = name)
+                                    Text(text = name, fontSize = btnTxt)
                                 }
                             }
                         }
