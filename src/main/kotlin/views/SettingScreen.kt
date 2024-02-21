@@ -85,7 +85,7 @@ fun settingScreen() {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
                                     onClick = { copyClipboard(text) }) {
-                                    Text(text = "Cp $text", fontSize = smartText(.7f))
+                                    Text(text = "cp $text", fontSize = smartText(.6f))
                                 }
                             }
                         }

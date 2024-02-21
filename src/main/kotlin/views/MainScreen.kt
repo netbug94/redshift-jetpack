@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.*
+import customs.buttons.leftButtonTxt
+import customs.buttons.rightButtonTxt
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.Companion.redshiftCommandD
 import engine_helpers.RedshiftController.Companion.redshiftCommandN
@@ -46,7 +48,7 @@ fun mainScreen() {
                             onClick = { currentScreen = Navi.MainScn })) {
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
-                            modifier = Modifier.fillMaxSize().padding(13.dp)
+                            modifier = Modifier.fillMaxSize().padding(15.dp)
                         )
                     }
 
@@ -59,7 +61,7 @@ fun mainScreen() {
                             onClick = { currentScreen = Navi.SettingScn })) {
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
-                            modifier = Modifier.fillMaxSize().padding(14.dp)
+                            modifier = Modifier.fillMaxSize().padding(16.dp)
                         )
                     }
                 }
@@ -132,7 +134,7 @@ fun mainScreen() {
                             Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
                                 onClick = { selectedButton = "X" ; redshiftCommandX("DefaultLightX.sh") }) {
-                                Text("Reset")
+                                Text("Reset", fontSize = btnTxt)
                             }
                         }
                         Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
