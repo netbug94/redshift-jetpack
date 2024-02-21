@@ -6,6 +6,6 @@ import views.mainScreen
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
         mainScreen()
-        olrScn("\uD83C\uDF35olr")
+        olrScn("olr")
     }
 }
