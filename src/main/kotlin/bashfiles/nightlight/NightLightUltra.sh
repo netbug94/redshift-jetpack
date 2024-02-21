@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Daylight button X
+# Nightlight max
 
 redshift -x
 
