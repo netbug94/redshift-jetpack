@@ -18,8 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.*
 import engine_helpers.Navi
-import engine_helpers.RedshiftController.Companion.redshiftCommandA
-import engine_helpers.RedshiftController.Companion.redshiftCommandB
+import engine_helpers.RedshiftController.Companion.redshiftCommandD
+import engine_helpers.RedshiftController.Companion.redshiftCommandN
 import engine_helpers.RedshiftController.Companion.redshiftCommandX
 
 @Composable
@@ -66,7 +66,22 @@ fun mainScreen() {
                 Row(modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Left box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.6f))
+                    Column(modifier = Modifier.fillMaxSize().weight(1.6f), verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally) {
+                        Spacer(modifier = Modifier.weight(1.8f))
+// Left button
+                        Row(modifier = Modifier.fillMaxSize().weight(7.2f), verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center) {
+                            Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
+                            Button(modifier = Modifier.fillMaxSize().weight(1f),
+                                colors = ButtonDefaults.buttonColors(DeepPurple),
+                                onClick = { selectedButton = "Max Night"; redshiftCommandN("NightLightUltra.sh") }) {
+                                leftButtonTxt()
+                            }
+                            Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                    }
 // Nightlight buttons
                     Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.5f),
                         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
@@ -86,11 +101,11 @@ fun mainScreen() {
                                         selectedButton = name
                                         // Execute command based on selectedButton
                                         when (selectedButton) {
-                                            "2000k" -> redshiftCommandA("NightLight0.sh")
-                                            "2500k" -> redshiftCommandA("NightLight1.sh")
-                                            "3500k" -> redshiftCommandA("NightLight2.sh")
-                                            "4500k" -> redshiftCommandA("NightLight3.sh")
-                                            "5500k" -> redshiftCommandA("NightLight4.sh")
+                                            "2000k" -> redshiftCommandN("NightLight0.sh")
+                                            "2500k" -> redshiftCommandN("NightLight1.sh")
+                                            "3500k" -> redshiftCommandN("NightLight2.sh")
+                                            "4500k" -> redshiftCommandN("NightLight3.sh")
+                                            "5500k" -> redshiftCommandN("NightLight4.sh")
                                             else -> {
                                             }
                                         }
@@ -105,16 +120,16 @@ fun mainScreen() {
 // Middle box
                     Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f)) {
                         Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f))
-
+// Text in the middle
                         Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(8f),
                             contentAlignment = Alignment.Center) {
                             Text(selectedButton, color = HyperBlue, fontSize = smartText(1f))
                         }
+// Reset button
                         Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f).padding(horizontal = 20.dp)){
                             Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "X"
-                                    redshiftCommandX("DefaultLightX.sh") }) {
+                                onClick = { selectedButton = "X" ; redshiftCommandX("DefaultLightX.sh") }) {
                                 Text("Reset")
                             }
                         }
@@ -139,11 +154,11 @@ fun mainScreen() {
                                         selectedButton = name
                                         // Execute command based on selectedButton
                                         when (selectedButton) {
-                                            "7500k" -> redshiftCommandB("DayLight5.sh")
-                                            "8500k" -> redshiftCommandB("DayLight6.sh")
-                                            "9500k" -> redshiftCommandB("DayLight7.sh")
-                                            "11000k" -> redshiftCommandB("DayLight8.sh")
-                                            "12500k" -> redshiftCommandB("DayLight9.sh")
+                                            "7500k" -> redshiftCommandD("DayLight5.sh")
+                                            "8500k" -> redshiftCommandD("DayLight6.sh")
+                                            "9500k" -> redshiftCommandD("DayLight7.sh")
+                                            "11000k" -> redshiftCommandD("DayLight8.sh")
+                                            "12500k" -> redshiftCommandD("DayLight9.sh")
                                             else -> {
                                             }
                                         }
@@ -156,11 +171,26 @@ fun mainScreen() {
                         Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
                     }
 // Right box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.6f))
+                    Column(modifier = Modifier.fillMaxSize().weight(1.6f), verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally) {
+                        Spacer(modifier = Modifier.weight(1.8f))
+// Right button
+                        Row(modifier = Modifier.fillMaxSize().weight(7.2f), verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center) {
+                            Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
+                            Button(modifier = Modifier.fillMaxSize().weight(1f),
+                                colors = ButtonDefaults.buttonColors(DeepPurple),
+                                onClick = { selectedButton = "Max Day"; redshiftCommandD("DayLightUltra.sh") }) {
+                                rightButtonTxt()
+                            }
+                            Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                    }
                 }
             }
         }
-
+// Navi tail
         Navi.SettingScn -> settingScreen()
     }
 }
