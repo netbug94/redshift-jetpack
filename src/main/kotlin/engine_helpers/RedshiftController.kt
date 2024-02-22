@@ -4,9 +4,9 @@ import java.io.IOException
 
 class RedshiftController {
     companion object {
-        private fun redshiftCommand(scriptPath: String) {
+        private fun redshiftCommand(runThis: String) {
             try {
-                val process = ProcessBuilder("bash", scriptPath).start()
+                val process = ProcessBuilder("bash", "-c", runThis).start()
 
                 // Redirect error stream to standard output to capture errors
                 process.errorStream.reader().use { reader ->
@@ -34,18 +34,15 @@ class RedshiftController {
         }
 // Reset controller
         fun redshiftCommandX(scriptName: String) {
-            val scriptPath = "src/main/kotlin/bashfiles/$scriptName"
-            redshiftCommand(scriptPath)
+    redshiftCommand(scriptName)
         }
 // Night controller
         fun redshiftCommandN(scriptName: String) {
-            val scriptPath = "src/main/kotlin/bashfiles/nightlight/$scriptName"
-            redshiftCommand(scriptPath)
+    redshiftCommand(scriptName)
         }
 // Day controller
         fun redshiftCommandD(scriptName: String) {
-            val scriptPath = "src/main/kotlin/bashfiles/daylight/$scriptName"
-            redshiftCommand(scriptPath)
+    redshiftCommand(scriptName)
         }
     }
 }

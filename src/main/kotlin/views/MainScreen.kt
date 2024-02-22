@@ -32,7 +32,23 @@ fun mainScreen() {
     var selectedButton by remember { mutableStateOf("") }
     val btnTxt = smartText(.6f)
 
-    when (currentScreen) {
+    val nightButton0 = "redshift -x ; redshift -O 2000k"
+    val nightButton1 = "redshift -x ; redshift -O 2500k"
+    val nightButton2 = "redshift -x ; redshift -O 3500k"
+    val nightButton3 = "redshift -x ; redshift -O 4500k"
+    val nightButton4 = "redshift -x ; redshift -O 5500k"
+
+    val maxNight = "redshift -x ; redshift -O 1000k"
+    val resetButton = "redshift -x"
+    val maxDay = "redshift -x ; redshift -O 25000K"
+
+    val dayButton5 = "redshift -x ; redshift -O 7500k"
+    val dayButton6 = "redshift -x ; redshift -O 8500k"
+    val dayButton7 = "redshift -x ; redshift -O 9500k"
+    val dayButton8 = "redshift -x ; redshift -O 11000k"
+    val dayButton9 = "redshift -x ; redshift -O 12500k"
+
+        when (currentScreen) {
         is Navi.MainScn -> {
 // Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
@@ -79,7 +95,7 @@ fun mainScreen() {
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                             Button(modifier = Modifier.fillMaxSize().weight(1f),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "Max Night"; redshiftCommandN("NightLightUltra.sh") }) {
+                                onClick = { selectedButton = "Max Night"; redshiftCommandN(maxNight) }) {
                                 leftButtonTxt()
                             }
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
@@ -105,11 +121,11 @@ fun mainScreen() {
                                         selectedButton = name
                                         // Execute command based on selectedButton
                                         when (selectedButton) {
-                                            "2000k" -> redshiftCommandN("NightLight0.sh")
-                                            "2500k" -> redshiftCommandN("NightLight1.sh")
-                                            "3500k" -> redshiftCommandN("NightLight2.sh")
-                                            "4500k" -> redshiftCommandN("NightLight3.sh")
-                                            "5500k" -> redshiftCommandN("NightLight4.sh")
+                                            "2000k" -> redshiftCommandN(nightButton0)
+                                            "2500k" -> redshiftCommandN(nightButton1)
+                                            "3500k" -> redshiftCommandN(nightButton2)
+                                            "4500k" -> redshiftCommandN(nightButton3)
+                                            "5500k" -> redshiftCommandN(nightButton4)
                                             else -> {
                                             }
                                         }
@@ -133,7 +149,7 @@ fun mainScreen() {
                         Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f).padding(horizontal = 20.dp)){
                             Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "X" ; redshiftCommandX("DefaultLightX.sh") }) {
+                                onClick = { selectedButton = "X" ; redshiftCommandX(resetButton) }) {
                                 Text("Reset", fontSize = btnTxt)
                             }
                         }
@@ -158,11 +174,11 @@ fun mainScreen() {
                                         selectedButton = name
                                         // Execute command based on selectedButton
                                         when (selectedButton) {
-                                            "7500k" -> redshiftCommandD("DayLight5.sh")
-                                            "8500k" -> redshiftCommandD("DayLight6.sh")
-                                            "9500k" -> redshiftCommandD("DayLight7.sh")
-                                            "11000k" -> redshiftCommandD("DayLight8.sh")
-                                            "12500k" -> redshiftCommandD("DayLight9.sh")
+                                            "7500k" -> redshiftCommandD(dayButton5)
+                                            "8500k" -> redshiftCommandD(dayButton6)
+                                            "9500k" -> redshiftCommandD(dayButton7)
+                                            "11000k" -> redshiftCommandD(dayButton8)
+                                            "12500k" -> redshiftCommandD(dayButton9)
                                             else -> {
                                             }
                                         }
@@ -184,7 +200,7 @@ fun mainScreen() {
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                             Button(modifier = Modifier.fillMaxSize().weight(1f),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "Max Day"; redshiftCommandD("DayLightUltra.sh") }) {
+                                onClick = { selectedButton = "Max Day"; redshiftCommandD(maxDay) }) {
                                 rightButtonTxt()
                             }
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))

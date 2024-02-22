@@ -2,6 +2,4 @@
 
 # Nightlight button 0
 
-redshift -x
-
-redshift -O 2000k
+redshift -x ; redshift -O 2000k

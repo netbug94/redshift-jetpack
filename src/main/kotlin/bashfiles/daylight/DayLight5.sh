@@ -2,6 +2,4 @@
 
 # Daylight button 5
 
-redshift -x
-
-redshift -O 7500k
+redshift -x ; redshift -O 7500k
