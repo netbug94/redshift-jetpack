@@ -42,9 +42,9 @@ fun settingScreen() {
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.MainScn })) {
+                        .clickable(interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(bounded = false, radius = 10.dp),
+                            onClick = { currentScreen = Navi.MainScn })) {
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
@@ -54,10 +54,10 @@ fun settingScreen() {
                     Text("JetPack-Redshift", color = HyperBlue, fontSize = smartText(1f))
 
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.SettingScn })) {
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(bounded = false, radius = 10.dp),
+                            onClick = { currentScreen = Navi.SettingScn })) {
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)

@@ -48,7 +48,7 @@ fun mainScreen() {
     val dayButton8 = "redshift -x ; redshift -O 11000k"
     val dayButton9 = "redshift -x ; redshift -O 12500k"
 
-        when (currentScreen) {
+    when (currentScreen) {
         is Navi.MainScn -> {
 // Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),

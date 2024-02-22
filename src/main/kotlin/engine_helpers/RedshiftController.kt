@@ -8,17 +8,15 @@ class RedshiftController {
             try {
                 val process = ProcessBuilder("bash", "-c", runThis).start()
 
-                // Redirect error stream to standard output to capture errors
+// Redirect error stream to standard output to capture errors
                 process.errorStream.reader().use { reader ->
                     reader.forEachLine { line -> println(line) }
                 }
-
-                // Read process output
+// Read process output
                 process.inputStream.bufferedReader().use { reader ->
                     reader.forEachLine { line -> println(line) }
                 }
-
-                // Wait for process to finish
+// Wait for process to finish
                 val exitVal = process.waitFor()
 
                 if (exitVal == 0) {
@@ -26,6 +24,7 @@ class RedshiftController {
                 } else {
                     println("Error: $exitVal")
                 }
+// Extra error handling
             } catch (e: IOException) {
                 println("Error: ${e.message}")
             } catch (e: InterruptedException) {

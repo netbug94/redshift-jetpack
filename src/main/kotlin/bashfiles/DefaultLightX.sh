@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Reset button
+# Neutral button
 
 redshift -x
