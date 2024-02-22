@@ -32,21 +32,24 @@ fun mainScreen() {
     var selectedButton by remember { mutableStateOf("") }
     val btnTxt = smartText(.6f)
 
-    val nightButton0 = "redshift -x ; redshift -O 2000k"
-    val nightButton1 = "redshift -x ; redshift -O 2500k"
-    val nightButton2 = "redshift -x ; redshift -O 3500k"
-    val nightButton3 = "redshift -x ; redshift -O 4500k"
-    val nightButton4 = "redshift -x ; redshift -O 5500k"
+// Commands for left buttons
+    val nightButton0 = "redshift -O 2000k"
+    val nightButton1 = "redshift -O 2500k"
+    val nightButton2 = "redshift -O 3500k"
+    val nightButton3 = "redshift -O 4500k"
+    val nightButton4 = "redshift -O 5500k"
 
-    val maxNight = "redshift -x ; redshift -O 1000k"
-    val resetButton = "redshift -x"
-    val maxDay = "redshift -x ; redshift -O 25000K"
+// Max side and middle buttons
+    val maxNight = "redshift -O 1000k"
+    val resetButton = ""
+    val maxDay = "redshift -O 25000K"
 
-    val dayButton5 = "redshift -x ; redshift -O 7500k"
-    val dayButton6 = "redshift -x ; redshift -O 8500k"
-    val dayButton7 = "redshift -x ; redshift -O 9500k"
-    val dayButton8 = "redshift -x ; redshift -O 11000k"
-    val dayButton9 = "redshift -x ; redshift -O 12500k"
+// Commands for right buttons
+    val dayButton5 = "redshift -O 7500k"
+    val dayButton6 = "redshift -O 8500k"
+    val dayButton7 = "redshift -O 9500k"
+    val dayButton8 = "redshift -O 11000k"
+    val dayButton9 = "redshift -O 12500k"
 
     when (currentScreen) {
         is Navi.MainScn -> {

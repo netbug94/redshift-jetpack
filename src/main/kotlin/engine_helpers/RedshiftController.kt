@@ -6,7 +6,7 @@ class RedshiftController {
     companion object {
         private fun redshiftCommand(runThis: String) {
             try {
-                val process = ProcessBuilder("bash", "-c", runThis).start()
+                val process = ProcessBuilder("bash", "-c", "redshift -x ; $runThis").start()
 
 // Redirect error stream to standard output to capture errors
                 process.errorStream.reader().use { reader ->
