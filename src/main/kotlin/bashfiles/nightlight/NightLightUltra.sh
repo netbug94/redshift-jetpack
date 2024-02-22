@@ -1,5 +1,7 @@
 #!/bin/bash
 
-# Daylight button X
+# Nightlight max
 
-redshift -x ; redshift -O 1000k
+redshift -x
+
+redshift -O 1000k
