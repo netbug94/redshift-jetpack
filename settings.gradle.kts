@@ -10,4 +10,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "redshiftJetPack"
+rootProject.name = "redshift-jetpack"

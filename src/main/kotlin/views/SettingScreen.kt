@@ -51,7 +51,7 @@ fun settingScreen() {
                         )
                     }
 
-                    Text("JetPack-Redshift", color = HyperBlue, fontSize = smartText(1f))
+                    Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
 
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
                         .clickable(
