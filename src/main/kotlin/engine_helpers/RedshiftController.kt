@@ -5,8 +5,7 @@ import java.io.IOException
 object RedshiftController {
     fun redshiftCommand(runThis: String) {
         try {
-            val command = "redshift -O $runThis"
-            val process = ProcessBuilder("bash", "-c", "redshift -x ; $command").start()
+            val process = ProcessBuilder("bash", "-c", "redshift -x ; $runThis").start()
 
 // Redirect error stream to standard output to capture errors
             process.errorStream.reader().use { reader ->
