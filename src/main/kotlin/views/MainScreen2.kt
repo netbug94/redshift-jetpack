@@ -16,13 +16,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.res.*
 import engine_helpers.Navi
+import engine_helpers.RedshiftController.redshiftCommand
+import kotlin.math.roundToInt
 
 @Composable
 fun mainScreen2() {
     var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn2) }
-    val btnTxt = smartText(.6f)
+    var sliderState by remember { mutableStateOf(0f) }
+    var currentSelection by remember { mutableStateOf("") }
 
-    val sliderValue = remember { mutableStateOf(0f) }
 
 // Slider commands
     val temperatureList = listOf(
@@ -32,13 +34,13 @@ fun mainScreen2() {
         "redshift -O 3500k",
         "redshift -O 4500k",
         "redshift -O 5500k",
-        "",
-        "redshift -O 25000K",
+        "x",
         "redshift -O 7500k",
         "redshift -O 8500k",
         "redshift -O 9500k",
         "redshift -O 11000k",
-        "redshift -O 12500k"
+        "redshift -O 12500k",
+        "redshift -O 25000K"
     )
 
     when (currentScreen) {
@@ -89,13 +91,22 @@ fun mainScreen2() {
                 Row(modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Slider
-                    Slider(
-                        value = sliderValue.value,
-                        onValueChange = { newValue ->
-                            // Update the slider value when it changes
-                            sliderValue.value = newValue
-                        }
-                    )
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Slider(
+                            value = sliderState,
+                            onValueChange = { newValue ->
+                                sliderState = newValue
+                            },
+                            onValueChangeFinished = {
+                                val index = (sliderState * (temperatureList.size - 1)).roundToInt()
+                                redshiftCommand(temperatureList[index])
+                                currentSelection = temperatureList[index]
+                            },
+                            valueRange = 0f..1f,
+                            steps = temperatureList.size - 1
+                        )
+                        Text(text = currentSelection, color = androidx.compose.ui.graphics.Color.White)
+                    }
                 }
             }
         }
