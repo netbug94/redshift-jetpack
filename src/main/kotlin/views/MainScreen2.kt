@@ -25,7 +25,6 @@ import engine_helpers.RedshiftController.redshiftCommand
 fun mainScreen2() {
     var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn2) }
     var sliderState by remember { mutableStateOf(6f) }
-
     val temperatureList = listOf(
         "redshift -O  1000k",
         "redshift -O  2000k",
@@ -41,7 +40,6 @@ fun mainScreen2() {
         "redshift -O  12500k",
         "redshift -O  25000K"
     )
-
     when (currentScreen) {
         is Navi.MainScn2 -> {
 // Head container
@@ -52,38 +50,27 @@ fun mainScreen2() {
             ) {
 
 
-                Row(
-                    modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
-                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
-                ) {
-
-
-                    Box(
-                        modifier = Modifier.fillMaxSize().weight(1f)
+                Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
+                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+// Left head
+                    Box(modifier = Modifier.fillMaxSize().weight(1f)
                             .clickable(interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.MainScn2 })
-                    ) {
-                        Image(
-                            painter = painterResource("HomePng240B.png"),
+                                onClick = { currentScreen = Navi.MainScn2 })) {
+                        Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                         )
                     }
-
-
+// Middle head
                     Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
-
-
-                    Box(
-                        modifier = Modifier.fillMaxSize().weight(1f)
+// Right head
+                    Box(modifier = Modifier.fillMaxSize().weight(1f)
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.SettingScn })
-                    ) {
-                        Image(
-                            painter = painterResource("SettingsPng240B.png"),
+                                onClick = { currentScreen = Navi.SettingScn })) {
+                        Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
                         )
