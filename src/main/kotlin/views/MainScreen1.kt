@@ -20,13 +20,11 @@ import customs.buttons.leftButtonTxt
 import customs.buttons.rightButtonTxt
 import customs.res.*
 import engine_helpers.Navi
-import engine_helpers.RedshiftController.Companion.redshiftCommandD
-import engine_helpers.RedshiftController.Companion.redshiftCommandN
-import engine_helpers.RedshiftController.Companion.redshiftCommandX
+import engine_helpers.RedshiftController.redshiftCommand
 
 @Composable
-fun mainScreen() {
-    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn) }
+fun mainScreen1() {
+    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn1) }
     val nightLight = listOf("2000k", "2500k", "3500k", "4500k", "5500k")
     val dayLight = listOf("7500k", "8500k", "9500k", "11000k", "12500k")
     var selectedButton by remember { mutableStateOf("") }
@@ -52,7 +50,7 @@ fun mainScreen() {
     val dayButton9 = "redshift -O 12500k"
 
     when (currentScreen) {
-        is Navi.MainScn -> {
+        is Navi.MainScn1 -> {
 // Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
@@ -64,7 +62,7 @@ fun mainScreen() {
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
                         .clickable(interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(bounded = false, radius = 10.dp),
-                            onClick = { currentScreen = Navi.MainScn })) {
+                            onClick = { currentScreen = Navi.MainScn1 })) {
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
@@ -98,7 +96,7 @@ fun mainScreen() {
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                             Button(modifier = Modifier.fillMaxSize().weight(1f),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "Max Night"; redshiftCommandN(maxNight) }) {
+                                onClick = { selectedButton = "Max Night"; redshiftCommand(maxNight) }) {
                                 leftButtonTxt()
                             }
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
@@ -124,11 +122,11 @@ fun mainScreen() {
                                         selectedButton = name
                                         // Execute command based on selectedButton
                                         when (selectedButton) {
-                                            "2000k" -> redshiftCommandN(nightButton0)
-                                            "2500k" -> redshiftCommandN(nightButton1)
-                                            "3500k" -> redshiftCommandN(nightButton2)
-                                            "4500k" -> redshiftCommandN(nightButton3)
-                                            "5500k" -> redshiftCommandN(nightButton4)
+                                            "2000k" -> redshiftCommand(nightButton0)
+                                            "2500k" -> redshiftCommand(nightButton1)
+                                            "3500k" -> redshiftCommand(nightButton2)
+                                            "4500k" -> redshiftCommand(nightButton3)
+                                            "5500k" -> redshiftCommand(nightButton4)
                                             else -> {
                                             }
                                         }
@@ -152,7 +150,7 @@ fun mainScreen() {
                         Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(2f).padding(horizontal = 20.dp)){
                             Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "X" ; redshiftCommandX(resetButton) }) {
+                                onClick = { selectedButton = "X" ; redshiftCommand(resetButton) }) {
                                 Text("Reset", fontSize = btnTxt)
                             }
                         }
@@ -177,11 +175,11 @@ fun mainScreen() {
                                         selectedButton = name
                                         // Execute command based on selectedButton
                                         when (selectedButton) {
-                                            "7500k" -> redshiftCommandD(dayButton5)
-                                            "8500k" -> redshiftCommandD(dayButton6)
-                                            "9500k" -> redshiftCommandD(dayButton7)
-                                            "11000k" -> redshiftCommandD(dayButton8)
-                                            "12500k" -> redshiftCommandD(dayButton9)
+                                            "7500k" -> redshiftCommand(dayButton5)
+                                            "8500k" -> redshiftCommand(dayButton6)
+                                            "9500k" -> redshiftCommand(dayButton7)
+                                            "11000k" -> redshiftCommand(dayButton8)
+                                            "12500k" -> redshiftCommand(dayButton9)
                                             else -> {
                                             }
                                         }
@@ -203,7 +201,7 @@ fun mainScreen() {
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                             Button(modifier = Modifier.fillMaxSize().weight(1f),
                                 colors = ButtonDefaults.buttonColors(DeepPurple),
-                                onClick = { selectedButton = "Max Day"; redshiftCommandD(maxDay) }) {
+                                onClick = { selectedButton = "Max Day"; redshiftCommand(maxDay) }) {
                                 rightButtonTxt()
                             }
                             Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
@@ -215,5 +213,6 @@ fun mainScreen() {
         }
 // Navi tail
         Navi.SettingScn -> settingScreen()
+        Navi.MainScn2 -> mainScreen2()
     }
 }

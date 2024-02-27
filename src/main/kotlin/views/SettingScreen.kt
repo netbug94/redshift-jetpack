@@ -44,7 +44,7 @@ fun settingScreen() {
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
                         .clickable(interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(bounded = false, radius = 10.dp),
-                            onClick = { currentScreen = Navi.MainScn })) {
+                            onClick = { currentScreen = Navi.MainScn2 })) {
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
@@ -96,7 +96,8 @@ fun settingScreen() {
                 }
             }
         }
-
-        Navi.MainScn -> mainScreen()
+// Navi tail
+        Navi.MainScn1 -> mainScreen1()
+        Navi.MainScn2 -> mainScreen2()
     }
 }
