@@ -1,11 +1,11 @@
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import customs.res.olrScn
-import views.mainScreen
+import customs.olrScn
+import views.MSHanlder.msHandler
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
-        mainScreen()
+        msHandler()
         olrScn("olr")
     }
 }

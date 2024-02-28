@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import customs.res.*
+import customs.*
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.redshiftCommand
 
@@ -66,7 +66,11 @@ fun mainScreen() {
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(bounded = false, radius = 10.dp),
-                            onClick = { currentScreen = Navi.MainScn2 })
+                            onClick = {
+                                currentScreen = Navi.MainScn2
+                                saveBooleanToFile(false)
+                            }
+                        )
                     )
 // Right head
                     Row(modifier = Modifier.fillMaxSize().weight(1f)) {
