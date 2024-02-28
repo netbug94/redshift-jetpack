@@ -61,7 +61,13 @@ fun mainScreen() {
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }
 // Middle head
-                    Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
+                    Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f),
+                        modifier = Modifier
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(bounded = false, radius = 10.dp),
+                            onClick = { currentScreen = Navi.MainScn2 })
+                    )
 // Right head
                     Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
@@ -103,5 +109,6 @@ fun mainScreen() {
 // Navi tail
         Navi.SettingScn -> settingScreen()
         Navi.MainScn -> mainScreen()
+        Navi.MainScn2 -> mainScreen2()
     }
 }

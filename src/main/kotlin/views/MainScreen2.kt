@@ -1,14 +1,12 @@
 package views
 
-import engine_helpers.Navi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Divider
+import androidx.compose.material.Slider
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
@@ -18,35 +16,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.res.*
-import engine_helpers.ClipBoardHandler.copyClipboard
-import java.io.File
+import engine_helpers.Navi
+import engine_helpers.RedshiftController.redshiftCommand
 
 @Composable
-fun settingScreen() {
-    var currentScreen by remember { mutableStateOf<Navi>(Navi.SettingScn) }
-    val apt = "sudo apt install redshift -y"
-    val dnf = "sudo dnf install redshift -y"
-    val nala = "sudo nala install redshift -y"
-    val pacman = "sudo pacman install redshift -y"
-    val zypper = "sudo zypper install redshift -y"
-    val textList = listOf(apt, dnf, nala, pacman, zypper)
-
-    val filePath = "src/main/kotlin/MSState"
-    var buttonState by remember { mutableStateOf("Slider") }
-    LaunchedEffect(Unit) {
-        val file = File(filePath)
-        if (file.exists()) {
-            buttonState = file.readText()
-        }
-    }
-
+fun mainScreen2() {
+    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn2) }
+    var sliderState by remember { mutableStateOf(6f) }
+    val temperatureList = listOf(
+        "redshift -O  1000k",
+        "redshift -O  2000k",
+        "redshift -O  2500k",
+        "redshift -O  3500k",
+        "redshift -O  4500k",
+        "redshift -O  5500k",
+        "x",
+        "redshift -O  7500k",
+        "redshift -O  8500k",
+        "redshift -O  9500k",
+        "redshift -O  11000k",
+        "redshift -O  12500k",
+        "redshift -O  25000K"
+    )
     when (currentScreen) {
-        is Navi.SettingScn -> {
+        is Navi.MainScn2 -> {
+// Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
 
-                Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
+                Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(Color.Blue),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Left head
                     Row(modifier = Modifier.fillMaxSize().weight(1f)) {
@@ -56,13 +55,20 @@ fun settingScreen() {
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                                 .clickable(interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(bounded = false, radius = 10.dp),
-                                    onClick = { currentScreen = Navi.MainScn })
+                                    onClick = { currentScreen = Navi.MainScn2 })
                                 .weight(1f)
                         )
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }
 // Middle head
-                    Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
+                    Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f),
+                        modifier = Modifier
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(bounded = false, radius = 10.dp),
+                                onClick = { currentScreen = Navi.MainScn })
+
+                    )
 // Right head
                     Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
@@ -79,37 +85,30 @@ fun settingScreen() {
                     }
                 }
                 Divider(modifier = Modifier.height(1.dp), color = ErgoGray)
-
+// Body container
                 Row(modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-// Left middle box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
-// Install buttons (true middle)
-                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
-                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                        Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
-                            contentAlignment = Alignment.Center) {
-                            Text("Install redshift", fontSize = smartText(.9f), color = HyperBlue)
-                        }
-                        textList.forEachIndexed { _, text ->
-                            Row(modifier = Modifier.fillMaxSize().weight(1f),
-                                horizontalArrangement = Arrangement.Center,
-                                verticalAlignment = Alignment.CenterVertically) {
-                                Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
-                                    colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
-                                    onClick = { copyClipboard(text) }) {
-                                    Text(text = "cp $text", fontSize = smartText(.6f))
-                                }
-                            }
-                        }
-                        Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
+// Slider
+                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                        Slider(
+                            value = sliderState,
+                            onValueChange = { newValue ->
+                                sliderState = newValue
+                            },
+                            onValueChangeFinished = {
+                                val cmdBridge = temperatureList[sliderState.toInt()]
+                                redshiftCommand(cmdBridge)
+                            },
+                            valueRange =  0f..12f,
+                            steps =  11
+                        )
+                        Text(text = temperatureList[sliderState.toInt()], color = Color.White, fontSize = smartText(.7f))
                     }
-// Right middle box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                 }
             }
         }
 // Navi tail
+        Navi.SettingScn -> settingScreen()
         Navi.MainScn -> mainScreen()
         Navi.MainScn2 -> mainScreen2()
     }
