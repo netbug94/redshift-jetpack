@@ -48,7 +48,7 @@ fun mainScreen() {
                 Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Left head
-                    Row(modifier = Modifier.fillMaxSize().weight(1f)){
+                    Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
@@ -56,15 +56,15 @@ fun mainScreen() {
                                 .clickable(interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(bounded = false, radius = 10.dp),
                                     onClick = { currentScreen = Navi.MainScn })
-                                .weight(2f)
+                                .weight(1f)
                         )
-                        Spacer(modifier = Modifier.fillMaxSize().weight(2f))
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }
 // Middle head
                     Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
 // Right head
-                    Row(modifier = Modifier.fillMaxSize().weight(1f)){
-                        Spacer(modifier = Modifier.fillMaxSize().weight(2f))
+                    Row(modifier = Modifier.fillMaxSize().weight(1f)) {
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
@@ -72,7 +72,7 @@ fun mainScreen() {
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(bounded = false, radius = 10.dp),
                                     onClick = { currentScreen = Navi.SettingScn })
-                                .weight(2f)
+                                .weight(1f)
                         )
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }

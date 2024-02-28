@@ -48,28 +48,34 @@ fun settingScreen() {
 
                 Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-
-                    Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.MainScn })) {
+// Left head
+                    Row(modifier = Modifier.fillMaxSize().weight(1f)) {
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
+                                .clickable(interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(bounded = false, radius = 10.dp),
+                                    onClick = { currentScreen = Navi.MainScn })
+                                .weight(1f)
                         )
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }
-
+// Middle head
                     Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
-
-                    Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.SettingScn })) {
+// Right head
+                    Row(modifier = Modifier.fillMaxSize().weight(1f)) {
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(bounded = false, radius = 10.dp),
+                                    onClick = { currentScreen = Navi.SettingScn })
+                                .weight(1f)
                         )
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }
                 }
                 Divider(modifier = Modifier.height(1.dp), color = ErgoGray)
@@ -98,29 +104,8 @@ fun settingScreen() {
                         }
                         Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
                     }
-                    //
-                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
-                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                        Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
-                            contentAlignment = Alignment.Center) {
-                            Text("Switch Layout", fontSize = smartText(.9f), color = HyperBlue)
-                        }
-                        Box(modifier = Modifier.fillMaxSize().weight(1f), contentAlignment = Alignment.Center) {
-                            Button(
-                                onClick = {
-                                    buttonState = if (buttonState == "Slider") "Buttons" else "Slider"
-                                    // Save the state to a file
-                                    val file = File(filePath)
-                                    file.writeText(buttonState)
-                                }
-                            ) {
-                                Text(text = buttonState)
-                            }
-
-                        }
 // Right middle box
-                        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
-                    }
+                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
                 }
             }
         }
