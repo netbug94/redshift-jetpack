@@ -22,8 +22,8 @@ import engine_helpers.RedshiftController.redshiftCommand
 
 
 @Composable
-fun mainScreen2() {
-    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn2) }
+fun mainScreen() {
+    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn) }
     var sliderState by remember { mutableStateOf(6f) }
     val temperatureList = listOf(
         "redshift -O  1000k",
@@ -41,39 +41,44 @@ fun mainScreen2() {
         "redshift -O  25000K"
     )
     when (currentScreen) {
-        is Navi.MainScn2 -> {
+        is Navi.MainScn -> {
 // Head container
-            Column(
-                modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
+            Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
+                horizontalAlignment = Alignment.CenterHorizontally) {
 
                 Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Left head
-                    Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.MainScn2 })) {
+                    Row(modifier = Modifier.fillMaxSize().weight(1f)){
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
+
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
+                                .clickable(interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(bounded = false, radius = 10.dp),
+                                    onClick = { currentScreen = Navi.MainScn })
+                                .weight(2f)
                         )
+                        Spacer(modifier = Modifier.fillMaxSize().weight(2f))
                     }
 // Middle head
                     Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
 // Right head
-                    Box(modifier = Modifier.fillMaxSize().weight(1f)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.SettingScn })) {
+                    Row(modifier = Modifier.fillMaxSize().weight(1f)){
+                        Spacer(modifier = Modifier.fillMaxSize().weight(2f))
+
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(bounded = false, radius = 10.dp),
+                                    onClick = { currentScreen = Navi.SettingScn })
+                                .weight(2f)
                         )
+                        Spacer(modifier = Modifier.fillMaxSize().weight(1f))
                     }
                 }
                 Divider(modifier = Modifier.height(1.dp), color = ErgoGray)
@@ -101,6 +106,6 @@ fun mainScreen2() {
         }
 // Navi tail
         Navi.SettingScn -> settingScreen()
-        Navi.MainScn1 -> mainScreen1()
+        Navi.MainScn -> mainScreen()
     }
 }
