@@ -9,8 +9,8 @@ import java.io.File
     fun mainScreenHandler() {
     val filePath = "src/main/kotlin/MSState"
     when (val fileContent = File(filePath).readText()) {
-        "true" -> mainScreen1()
-        "false" -> mainScreen2()
-        else -> println("Invalid content in the file: $fileContent")
+        "Buttons" -> mainScreen1()
+        "Slider" -> mainScreen2()
+        else -> println("mainScreenHandler: $fileContent")
     }
 }

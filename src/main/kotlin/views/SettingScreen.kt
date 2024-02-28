@@ -19,33 +19,48 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.res.*
 import engine_helpers.ClipBoardHandler.copyClipboard
+import java.io.File
 
 @Composable
 fun settingScreen() {
     var currentScreen by remember { mutableStateOf<Navi>(Navi.SettingScn) }
-
     val apt = "sudo apt install redshift -y"
     val dnf = "sudo dnf install redshift -y"
     val nala = "sudo nala install redshift -y"
     val pacman = "sudo pacman install redshift -y"
     val zypper = "sudo zypper install redshift -y"
-
     val textList = listOf(apt, dnf, nala, pacman, zypper)
+
+    val filePath = "src/main/kotlin/MSState"
+    var buttonState by remember { mutableStateOf("Slider") }
+    LaunchedEffect(Unit) {
+        val file = File(filePath)
+        if (file.exists()) {
+            buttonState = file.readText()
+        }
+    }
 
     when (currentScreen) {
         is Navi.SettingScn -> {
-            Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
+            Column(
+                modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally) {
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
 
-                Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
-                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
+                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
+                ) {
 
-                    Box(modifier = Modifier.fillMaxSize().weight(1f)
-                        .clickable(interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(bounded = false, radius = 10.dp),
-                            onClick = { currentScreen = Navi.MainScn2 })) {
-                        Image(painter = painterResource("HomePng240B.png"),
+                    Box(
+                        modifier = Modifier.fillMaxSize().weight(1f)
+                            .clickable(interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(bounded = false, radius = 10.dp),
+                                onClick = { currentScreen = Navi.MainScn2 })
+                    ) {
+                        Image(
+                            painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                         )
@@ -53,12 +68,15 @@ fun settingScreen() {
 
                     Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
 
-                    Box(modifier = Modifier.fillMaxSize().weight(1f)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(bounded = false, radius = 10.dp),
-                            onClick = { currentScreen = Navi.SettingScn })) {
-                        Image(painter = painterResource("SettingsPng240B.png"),
+                    Box(
+                        modifier = Modifier.fillMaxSize().weight(1f)
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(bounded = false, radius = 10.dp),
+                                onClick = { currentScreen = Navi.SettingScn })
+                    ) {
+                        Image(
+                            painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
                         )
@@ -66,22 +84,29 @@ fun settingScreen() {
                 }
                 Divider(modifier = Modifier.height(1.dp), color = ErgoGray)
 
-                Row(modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
+                Row(
+                    modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
                     horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
                 ) {
 // Left middle box
                     Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
 // Install buttons (true middle)
-                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
-                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                        Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
-                            contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
+                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
                             Text("Install redshift", fontSize = smartText(.9f), color = HyperBlue)
                         }
                         textList.forEachIndexed { _, text ->
-                            Row(modifier = Modifier.fillMaxSize().weight(1f),
+                            Row(
+                                modifier = Modifier.fillMaxSize().weight(1f),
                                 horizontalArrangement = Arrangement.Center,
-                                verticalAlignment = Alignment.CenterVertically) {
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
                                     onClick = { copyClipboard(text) }) {
@@ -91,8 +116,33 @@ fun settingScreen() {
                         }
                         Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
                     }
+                    //
+                    Column(
+                        modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
+                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text("Switch Layout", fontSize = smartText(.9f), color = HyperBlue)
+                        }
+                        Box(modifier = Modifier.fillMaxSize().weight(1f), contentAlignment = Alignment.Center) {
+                            Button(
+                                onClick = {
+                                    buttonState = if (buttonState == "Slider") "Buttons" else "Slider"
+                                    // Save the state to a file
+                                    val file = File(filePath)
+                                    file.writeText(buttonState)
+                                }
+                            ) {
+                                Text(text = buttonState)
+                            }
+
+                        }
 // Right middle box
-                    Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
+                        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
+                    }
                 }
             }
         }
