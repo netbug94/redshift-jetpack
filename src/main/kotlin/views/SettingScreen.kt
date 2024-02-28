@@ -42,25 +42,18 @@ fun settingScreen() {
 
     when (currentScreen) {
         is Navi.SettingScn -> {
-            Column(
-                modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
+            Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+                horizontalAlignment = Alignment.CenterHorizontally) {
 
-                Row(
-                    modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
-                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
-                ) {
+                Row(modifier = Modifier.fillMaxSize().weight(1.2f).background(DeepBlack),
+                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 
-                    Box(
-                        modifier = Modifier.fillMaxSize().weight(1f)
+                    Box(modifier = Modifier.fillMaxSize().weight(1f)
                             .clickable(interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.MainScn2 })
-                    ) {
-                        Image(
-                            painter = painterResource("HomePng240B.png"),
+                                onClick = { currentScreen = Navi.MainScn })) {
+                        Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                         )
@@ -68,15 +61,12 @@ fun settingScreen() {
 
                     Text("Redshift-JetPack", color = HyperBlue, fontSize = smartText(1f))
 
-                    Box(
-                        modifier = Modifier.fillMaxSize().weight(1f)
+                    Box(modifier = Modifier.fillMaxSize().weight(1f)
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
-                                onClick = { currentScreen = Navi.SettingScn })
-                    ) {
-                        Image(
-                            painter = painterResource("SettingsPng240B.png"),
+                                onClick = { currentScreen = Navi.SettingScn })) {
+                        Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
                         )
@@ -84,29 +74,21 @@ fun settingScreen() {
                 }
                 Divider(modifier = Modifier.height(1.dp), color = ErgoGray)
 
-                Row(
-                    modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
-                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
-                ) {
+                Row(modifier = Modifier.fillMaxSize().weight(10f).background(DeepGray),
+                    horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
 // Left middle box
                     Box(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1f))
 // Install buttons (true middle)
-                    Column(
-                        modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
-                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
+                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
+                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+                        Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
+                            contentAlignment = Alignment.Center) {
                             Text("Install redshift", fontSize = smartText(.9f), color = HyperBlue)
                         }
                         textList.forEachIndexed { _, text ->
-                            Row(
-                                modifier = Modifier.fillMaxSize().weight(1f),
+                            Row(modifier = Modifier.fillMaxSize().weight(1f),
                                 horizontalArrangement = Arrangement.Center,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
+                                verticalAlignment = Alignment.CenterVertically) {
                                 Button(modifier = Modifier.fillMaxSize().padding(vertical = 15.dp),
                                     colors = ButtonDefaults.buttonColors(DeepPurple), // Assuming you have a color defined somewhere
                                     onClick = { copyClipboard(text) }) {
@@ -117,14 +99,10 @@ fun settingScreen() {
                         Spacer(modifier = Modifier.fillMaxSize().weight(.5f))
                     }
                     //
-                    Column(
-                        modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
-                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
+                    Column(modifier = Modifier.fillMaxSize().background(Color.Transparent).weight(1.7f),
+                        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+                        Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 35.dp),
+                            contentAlignment = Alignment.Center) {
                             Text("Switch Layout", fontSize = smartText(.9f), color = HyperBlue)
                         }
                         Box(modifier = Modifier.fillMaxSize().weight(1f), contentAlignment = Alignment.Center) {
@@ -147,7 +125,6 @@ fun settingScreen() {
             }
         }
 // Navi tail
-        Navi.MainScn1 -> mainScreen1()
-        Navi.MainScn2 -> mainScreen2()
+        Navi.MainScn -> mainScreen()
     }
 }
