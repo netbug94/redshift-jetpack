@@ -1,6 +1,5 @@
 package views
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import customs.res.*
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.redshiftCommand
-
 
 @Composable
 fun mainScreen() {
@@ -52,7 +50,6 @@ fun mainScreen() {
 // Left head
                     Row(modifier = Modifier.fillMaxSize().weight(1f)){
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
-
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
@@ -68,7 +65,6 @@ fun mainScreen() {
 // Right head
                     Row(modifier = Modifier.fillMaxSize().weight(1f)){
                         Spacer(modifier = Modifier.fillMaxSize().weight(2f))
-
                         Image(painter = painterResource("SettingsPng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(16.dp)
