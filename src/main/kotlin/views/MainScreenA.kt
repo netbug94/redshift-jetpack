@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import customs.*
+import customs.misc.*
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.redshiftCommand
 import engine_helpers.SaveBoolean.saveBoolean

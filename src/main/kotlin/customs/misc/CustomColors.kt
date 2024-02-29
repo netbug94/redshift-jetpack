@@ -1,4 +1,4 @@
-package customs
+package customs.misc
 
 import androidx.compose.ui.graphics.Color
 
