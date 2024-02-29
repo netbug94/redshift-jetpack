@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import customs.res.*
+import customs.*
 import engine_helpers.ClipBoardHandler.copyClipboard
 import java.io.File
 
@@ -56,7 +56,7 @@ fun settingScreen() {
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                                 .clickable(interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(bounded = false, radius = 10.dp),
-                                    onClick = { currentScreen = Navi.MainScn })
+                                    onClick = { currentScreen = Navi.MainScnA })
                                 .weight(1f)
                         )
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
@@ -110,6 +110,7 @@ fun settingScreen() {
             }
         }
 // Navi tail
-        Navi.MainScn -> mainScreen()
+        Navi.MainScnA -> mainScreenA()
+        Navi.MainScnB -> mainScreenB()
     }
 }
