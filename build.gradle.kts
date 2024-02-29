@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.example"
-version = "1.0-SNAPSHOT"
+version = "2.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "redshiftJetPack"
-            packageVersion = "1.0.0"
+            packageVersion = "2.0.0"
         }
     }
 }

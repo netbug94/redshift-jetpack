@@ -21,7 +21,7 @@ import customs.buttons.leftButtonTxt
 import customs.buttons.rightButtonTxt
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.redshiftCommand
-import engine_helpers.saveBoolean
+import engine_helpers.SaveBoolean.saveBoolean
 
 @Composable
 fun mainScreenB() {

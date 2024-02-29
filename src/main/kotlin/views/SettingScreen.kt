@@ -1,6 +1,5 @@
 package views
 
-import engine_helpers.Navi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,7 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import customs.*
 import engine_helpers.ClipBoardHandler.copyClipboard
-import java.io.File
+import engine_helpers.Navi
 
 @Composable
 fun settingScreen() {
@@ -30,15 +29,6 @@ fun settingScreen() {
     val pacman = "sudo pacman install redshift -y"
     val zypper = "sudo zypper install redshift -y"
     val textList = listOf(apt, dnf, nala, pacman, zypper)
-
-    val filePath = "src/main/kotlin/MSState"
-    var buttonState by remember { mutableStateOf("Slider") }
-    LaunchedEffect(Unit) {
-        val file = File(filePath)
-        if (file.exists()) {
-            buttonState = file.readText()
-        }
-    }
 
     when (currentScreen) {
         is Navi.SettingScn -> {
