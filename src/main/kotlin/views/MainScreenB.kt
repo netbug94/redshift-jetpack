@@ -21,10 +21,11 @@ import customs.buttons.leftButtonTxt
 import customs.buttons.rightButtonTxt
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.redshiftCommand
+import engine_helpers.saveBoolean
 
 @Composable
-fun mainScreen2() {
-    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn2) }
+fun mainScreenB() {
+    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScnB) }
     val nightLight = listOf("2000k", "2500k", "3500k", "4500k", "5500k")
     val dayLight = listOf("7500k", "8500k", "9500k", "11000k", "12500k")
     var selectedButton by remember { mutableStateOf("") }
@@ -50,7 +51,7 @@ fun mainScreen2() {
     val dayButton9 = "redshift -O 12500k"
 
     when (currentScreen) {
-        is Navi.MainScn2 -> {
+        is Navi.MainScnB -> {
 // Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
@@ -62,7 +63,7 @@ fun mainScreen2() {
                     Box(modifier = Modifier.fillMaxSize().weight(1f)
                         .clickable(interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(bounded = false, radius = 10.dp),
-                            onClick = { currentScreen = Navi.MainScn2 })) {
+                            onClick = { currentScreen = Navi.MainScnB })) {
                         Image(painter = painterResource("HomePng240B.png"),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize().padding(15.dp)
@@ -75,8 +76,8 @@ fun mainScreen2() {
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(bounded = false, radius = 10.dp),
                                 onClick = {
-                                    currentScreen = Navi.MainScn
-                                    saveBooleanToFile(true)
+                                    currentScreen = Navi.MainScnA
+                                    saveBoolean(true)
                                 }
                             )
                     )
@@ -223,7 +224,7 @@ fun mainScreen2() {
         }
 // Navi tail
         Navi.SettingScn -> settingScreen()
-        Navi.MainScn2 -> mainScreen2()
-        Navi.MainScn -> mainScreen()
+        Navi.MainScnB -> mainScreenB()
+        Navi.MainScnA -> mainScreenA()
     }
 }

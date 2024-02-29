@@ -56,7 +56,7 @@ fun settingScreen() {
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                                 .clickable(interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(bounded = false, radius = 10.dp),
-                                    onClick = { currentScreen = Navi.MainScn })
+                                    onClick = { currentScreen = Navi.MainScnA })
                                 .weight(1f)
                         )
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
@@ -110,7 +110,7 @@ fun settingScreen() {
             }
         }
 // Navi tail
-        Navi.MainScn -> mainScreen()
-        Navi.MainScn2 -> mainScreen2()
+        Navi.MainScnA -> mainScreenA()
+        Navi.MainScnB -> mainScreenB()
     }
 }

@@ -18,10 +18,11 @@ import androidx.compose.ui.unit.dp
 import customs.*
 import engine_helpers.Navi
 import engine_helpers.RedshiftController.redshiftCommand
+import engine_helpers.saveBoolean
 
 @Composable
-fun mainScreen() {
-    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScn) }
+fun mainScreenA() {
+    var currentScreen by remember { mutableStateOf<Navi>(Navi.MainScnA) }
     var sliderState by remember { mutableStateOf(6f) }
     val temperatureList = listOf(
         "redshift -O  1000k",
@@ -39,7 +40,7 @@ fun mainScreen() {
         "redshift -O  25000K"
     )
     when (currentScreen) {
-        is Navi.MainScn -> {
+        is Navi.MainScnA -> {
 // Head container
             Column(modifier = Modifier.fillMaxSize().background(ErgoGray).padding(1.dp),
                 verticalArrangement = Arrangement.Center,
@@ -55,7 +56,7 @@ fun mainScreen() {
                             modifier = Modifier.fillMaxSize().padding(15.dp)
                                 .clickable(interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(bounded = false, radius = 10.dp),
-                                    onClick = { currentScreen = Navi.MainScn })
+                                    onClick = { currentScreen = Navi.MainScnA })
                                 .weight(1f)
                         )
                         Spacer(modifier = Modifier.fillMaxSize().weight(1f))
@@ -67,8 +68,8 @@ fun mainScreen() {
                             interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(bounded = false, radius = 10.dp),
                             onClick = {
-                                currentScreen = Navi.MainScn2
-                                saveBooleanToFile(false)
+                                currentScreen = Navi.MainScnB
+                                saveBoolean(false)
                             }
                         )
                     )
@@ -112,7 +113,7 @@ fun mainScreen() {
         }
 // Navi tail
         Navi.SettingScn -> settingScreen()
-        Navi.MainScn -> mainScreen()
-        Navi.MainScn2 -> mainScreen2()
+        Navi.MainScnA -> mainScreenA()
+        Navi.MainScnB -> mainScreenB()
     }
 }
