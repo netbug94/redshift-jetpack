@@ -21,9 +21,15 @@
 ![Screenshot from 2024-02-28 18-41-36](https://github.com/olracnai/redshift-jetpack/assets/135581442/c9c3c797-a5b7-486d-91a4-0610403b836b)
 </div>
 
-- [ ] Don't have Redshift installed? Click the settings icon, and copy the correct command for your distribution
+- [ ] Don't have Redshift installed? Click the settings icon, and copy the correct command for your distribution. (You can click the desired button, and it will be loaded into your clipboard)
 <div align="center">
   
 ![Screenshot from 2024-02-28 18-41-57](https://github.com/olracnai/redshift-jetpack/assets/135581442/b9f6e01c-1cd1-40ff-8ad6-47c78c5bccb1)
-![Screenshot from 2024-02-28 18-42-43](https://github.com/olracnai/redshift-jetpack/assets/135581442/4103b1bc-6df7-458d-a58a-998769175935)
+![Screenshot from 2024-02-28 18-42-43](https://github.com/olracnai/redshift-jetpack/assets/135581442/8c2119e6-92d2-4826-b1e3-c92c941d5cd7)
+</div>
+
+- [ ] Click the "home" icon to return to the main screen
+<div align="center">
+  
+![Screenshot from 2024-02-28 18-42-59](https://github.com/olracnai/redshift-jetpack/assets/135581442/b2947146-8735-46ea-be6a-f7eef31d2c20)
 </div>
