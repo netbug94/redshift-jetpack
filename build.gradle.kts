@@ -27,7 +27,8 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Rpm)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb,
+                TargetFormat.Rpm, TargetFormat.AppImage)
             packageName = "redshiftJetPack"
             packageVersion = "2.0.0"
         }
