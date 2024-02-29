@@ -25,4 +25,5 @@
 <div align="center">
   
 ![Screenshot from 2024-02-28 18-41-57](https://github.com/olracnai/redshift-jetpack/assets/135581442/b9f6e01c-1cd1-40ff-8ad6-47c78c5bccb1)
+![Screenshot from 2024-02-28 18-42-43](https://github.com/olracnai/redshift-jetpack/assets/135581442/4103b1bc-6df7-458d-a58a-998769175935)
 </div>
