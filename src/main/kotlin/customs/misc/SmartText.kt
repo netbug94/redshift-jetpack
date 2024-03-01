@@ -16,8 +16,8 @@ fun smartText(scaleFactor: Float =  1f): TextUnit {
         displayState in   726..825 ->  (35 * scaleFactor).sp
         displayState in   826..1125 ->  (45 * scaleFactor).sp
         displayState in   1126..1325 ->  (55 * scaleFactor).sp
-        displayState in   1326..1525 ->  (65 * scaleFactor).sp
-        displayState >=   1527 ->  (75 * scaleFactor).sp
+        displayState in   1326..1525 ->  (62 * scaleFactor).sp
+        displayState >=   1527 ->  (70 * scaleFactor).sp
         else ->  (20 * scaleFactor).sp // Default size
     }
 }
